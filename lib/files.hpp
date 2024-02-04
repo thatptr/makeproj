@@ -44,5 +44,26 @@ public:
       std::ofstream(this->file_name, std::ios::app)
           .write(text.c_str(), text.size());
   }
+
+  std::string read() {
+    std::string temp;
+    std::string out;
+
+    std::ifstream file(this->file_name);
+    while(getline(file, temp)){
+      out += temp;
+    }
+
+    return out;
+  }
+};
+
+class jsonfile {
+private:
+  std::string file_name;
+
+public:
+  jsonfile(std::string file_name): file_name(file_name) {}
+
 };
 } // namespace lib
